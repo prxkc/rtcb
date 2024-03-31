@@ -1,7 +1,8 @@
 import { Loader } from "lucide-react";
 
-//import { Skeleton } from "@/components/ui/skeleton";
 import { Info } from "./info";
+import { Participants } from "./participants";
+import { Toolbar } from "./toolbar";
 
 export const Loading = () => {
     return (
@@ -10,7 +11,9 @@ export const Loading = () => {
              items-center justify-center"
         >
             <Loader className="h-6 w-6 text-muted-foreground animate-spin"/>
-            <Info.Skeleton />
+            <Info.Skeleton></Info.Skeleton>
+            <Participants.Skeleton></Participants.Skeleton>
+            <Toolbar.Skeleton></Toolbar.Skeleton>
         </main>
     );
 };
