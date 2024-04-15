@@ -2,10 +2,13 @@ import { createClient } from "@liveblocks/client";
 import { createRoomContext, createLiveblocksContext } from "@liveblocks/react";
   
 const client = createClient({
-  publicApiKey: "pk_dev_qjHL-fY0odsQJssVGPgPHuMeuGx2ffbRJ-IZrZfb4VG1n632zPkf_9lxZX2p0mSe",
+  authEndpoint : "/api/liveblocks-auth",
+    
+  });
+  
   // authEndpoint: "/api/liveblocks-auth",
   // throttle: 100,
-  async resolveUsers({ userIds }) {
+  //async resolveUsers({ userIds }) {
     // Used only for Comments and Notifications. Return a list of user information
     // retrieved from `userIds`. This info is used in comments, mentions etc.
     
@@ -16,9 +19,9 @@ const client = createClient({
     //   avatar: userData.avatar.src,
     // }));
     
-    return [];
-  },
-  async resolveMentionSuggestions({ text }) {
+    //return [];
+  //},
+  //async resolveMentionSuggestions({ text }) {
     // Used only for Comments. Return a list of userIds that match `text`.
     // These userIds are used to create a mention list when typing in the
     // composer. 
@@ -30,9 +33,9 @@ const client = createClient({
     // const users = await getUsers({ search: text });
     // return users.map((user) => user.id);
 
-    return [];
-  },
-  async resolveRoomsInfo({ roomIds }) {
+    //return [];
+  //},
+  //async resolveRoomsInfo({ roomIds }) {
     // Used only for Comments and Notifications. Return a list of room information
     // retrieved from `roomIds`.
     
@@ -43,9 +46,9 @@ const client = createClient({
     //   url: roomData.url,
     // }));
     
-    return [];
-  },
-});
+    //return [];
+  //},
+//});
 
 // Presence represents the properties that exist on every user in the Room
 // and that will automatically be kept in sync. Accessible through the
@@ -68,8 +71,11 @@ type Storage = {
 // provided by your own custom auth back end (if used). Useful for data that
 // will not change during a session, like a user's name or avatar.
 type UserMeta = {
-  // id?: string,  // Accessible through `user.id`
-  // info?: Json,  // Accessible through `user.info`
+  id?:string;
+  info?: {
+    name?: string;
+    picture?:string;
+  };
 };
 
 // Optionally, the type of custom events broadcast and listened to in this
