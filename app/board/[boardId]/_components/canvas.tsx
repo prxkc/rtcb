@@ -69,7 +69,7 @@ export const Canvas = ({
             return;
         }
 
-        const liveLayersIds = storage.get("layerIds");
+        const liveLayerIds = storage.get("layerIds");
         const layerId = nanoid();
         const layer= new LiveObject({
             type: LayerType,
@@ -80,7 +80,7 @@ export const Canvas = ({
             fill: lastUsedColor,
         });
 
-        liveLayersIds.push(layerId);
+        liveLayerIds.push(layerId);
         liveLayers.set(layerId, layer);
 
         setMyPresence({ selection: [layerId]}, { addToHistory: true});
@@ -197,7 +197,7 @@ export const Canvas = ({
                 redo={history.redo}
             />
             <svg 
-            className="h=[100vh] w-[100vw]"
+            className="h-[100vh] w-[100vw]"
             onWheel={onWheel}
             onPointerMove={onPointerMove}
             onPointerLeave={onPointerLeave}
@@ -205,7 +205,7 @@ export const Canvas = ({
         >
             <g
                 style={{
-                    transform: `translate(${camera.x}px, ${camera.y}px`
+                    transform: `translate(${camera.x}px, ${camera.y}px)`
                 }}
             >
                 {layerIds.map((layerId) => (
