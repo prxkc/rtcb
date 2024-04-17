@@ -1,7 +1,11 @@
+"use client";
+
 import { useStorage } from "@/liveblocks.config";
 import { LayerType } from "@/types/canvas";
 import { RectangleHorizontal } from "lucide-react";
+import { Rectangle } from "./rectangle";
 import { memo } from "react";
+import { root } from "postcss";
 
 interface LayerPreviewProps {
     id: string;
@@ -10,30 +14,34 @@ interface LayerPreviewProps {
 };
 
 export const LayerPreview = memo(({
-id,
-onLayerPointerDown,
-selectionColor,
+    id,
+    onLayerPointerDown,
+    selectionColor,
 }: LayerPreviewProps) => {
     const layer = useStorage((root) => root.layers.get(id));
 
     if (!layer){
         return null;
     }
-    
 
-    switch (LayerPreview.type) {
+    switch (layer.type) {
         case LayerType.Rectangle:
             return (
                 <Rectangle 
-                id={id}
-                layer={layer}
-                onPointerDown={onLayerPointerDown}
-                selectionColor={selectionColor}
+                    id={id}
+                    layer={layer}
+                    onPointerDown={onLayerPointerDown}
+                    selectionColor={selectionColor}
                 />
-        );
-    default:
-        console.warn("Unknown layer type");
-        return null;
-}
-
+            );
+        default:
+            console.warn("Unknown layer type");
+            return null;
+    }
 });
+
+LayerPreview.displayName = "LayerPreview";
+
+
+
+

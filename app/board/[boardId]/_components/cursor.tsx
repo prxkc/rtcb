@@ -27,7 +27,7 @@ export const Cursor = memo(({
     return (
         <foreignObject
         style = {{
-            transform: 'translateX(${x}px) translateY(${y}px)'
+            transform: `translateX(${x}px) translateY(${y}px)`
     
         }}
         height={50}
