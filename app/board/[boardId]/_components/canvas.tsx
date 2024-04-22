@@ -31,6 +31,7 @@ import {
     pointerEventToCanvasPoint
  } from "@/lib/utils";
 import { root } from "postcss";
+import { SelectionTools } from "./selection-tools";
 //import { Camera, Camera } from "lucide-react";
 
 const MAX_LAYERS = 100;
@@ -195,6 +196,10 @@ export const Canvas = ({
                 canUndo={canUndo}
                 undo={history.undo}
                 redo={history.redo}
+            />
+            <SelectionTools 
+            camera={camera}
+            setLastUsedColor={LastUsedColor}
             />
             <svg 
             className="h-[100vh] w-[100vw]"
